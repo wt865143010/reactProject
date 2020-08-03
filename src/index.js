@@ -7,10 +7,16 @@ import "antd/dist/antd.css"
 import {Provider} from 'mobx-react'
 import store from "./store/store";
 
+/*分页组件中文设置*/
+import {ConfigProvider} from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
+
 ReactDOM.render(
-    <Provider {...store}>
-        <App />
-    </Provider>,
+    <ConfigProvider locale={zhCN}>
+        <Provider {...store}>
+            <App />
+        </Provider>
+    </ConfigProvider>,
   document.getElementById('root')
 );
 

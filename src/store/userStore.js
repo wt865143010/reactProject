@@ -5,6 +5,7 @@ export default class userStore {
     @observable user=[];
     @observable isLogin=false;
     @observable token="";
+    @observable orderList=[];/*订单表*/
 
     @action login=(obj)=>{
         console.log(obj)
@@ -32,4 +33,22 @@ export default class userStore {
 
 
     }
+
+    /*订单表渲染*/
+    @action myOrder=()=>{
+        return new Promise((resolve,reject)=>{
+            Axios.get(Api.user.myOrder)
+                .then(resp=>{
+                    console.log(resp.data.order);
+                    this.orderList=resp.data.order;
+                    // console.log(this.orderList);
+                    resolve("渲染成功");
+                })
+                .catch(e=>{
+                    console.log(e);
+                })
+        })
+
+    }
+
 }
