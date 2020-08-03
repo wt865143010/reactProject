@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css';
 import Login from "./pages/login/Login";
 import Home from "./pages/index/Home";
-import {BrowserRouter as Router,Route,Redirect} from "react-router-dom";
+import {BrowserRouter as Router,Route,Redirect,Switch} from "react-router-dom";
+import PrivateRouter from "./component/PrivateRouter/PrivateRouter";
+// import UserList from "./pages/user/userlist/UserList";
 
 
 /*引入订单管理组件*/
@@ -22,10 +24,10 @@ function App() {
   return (
       <Router>
         <div className="App">
-            <div>
-                {/*<Login/>*/}
+            <Switch>
                 <Route path="/" exact render={()=><Redirect to={"/login"}/>}></Route>
                 <Route path="/login" component={Login}></Route>
+<<<<<<< HEAD
                 <Route path="/home" component={Home}></Route>
             </div>
 
@@ -35,6 +37,16 @@ function App() {
             <InvoiceDetail></InvoiceDetail>
             <Return_Order></Return_Order>
             <Return_OrderDetail></Return_OrderDetail>
+=======
+                {/*<Route path="/home" component={Home}></Route>*/}
+                <Route path='/home' render={()=>
+                    <Home>
+                        <PrivateRouter/>
+                    </Home>
+                }>
+                </Route>
+            </Switch>
+>>>>>>> 822d3b82946c7d4060305adb109111fd578d4119
         </div>
       </Router>
   );
